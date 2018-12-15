@@ -5,17 +5,17 @@ module.exports = async function (context, req) {
     try {
         const connection = await new sql.ConnectionPool(process.env.SqlConnectionString).connect()
         const request = connection.request()
-        request.input('linkkey', sql.VarChar, req.query.linkkey)
-        const result = await request.query('SELECT RedirectUrl FROM Links WHERE ShortenedPath = @linkkey')
+        request.input('path', sql.VarChar, req.query.path)
+        const result = await request.query('SELECT RedirectUrl FROM Links WHERE ShortenedPath = @path')
         
         if (result.recordset.length === 0) {
-            context.log.warn('No record found for ' + req.query.linkkey)
+            context.log.warn('No record found for ' + req.query.path)
             context.res = {
                 body: 'Not found',
                 statusCode: 404
             }
         } else {
-            context.log('Redirecting `' + req.query.linkkey + '` to ' + result.recordset[0].RedirectUrl)
+            context.log('Redirecting `' + req.query.path + '` to ' + result.recordset[0].RedirectUrl)
             context.res = {
                 statusCode: 302,
                 headers: { "location": result.recordset[0].RedirectUrl },

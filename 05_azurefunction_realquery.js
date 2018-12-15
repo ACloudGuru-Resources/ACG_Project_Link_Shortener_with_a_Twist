@@ -5,8 +5,8 @@ module.exports = async function (context, req) {
     try {
         const connection = await new sql.ConnectionPool(process.env.SqlConnectionString).connect()
         const request = connection.request()
-        request.input('linkkey', sql.VarChar, req.query.linkkey)
-        const result = await request.query('SELECT RedirectUrl FROM Links WHERE ShortenedPath = @linkkey')
+        request.input('path', sql.VarChar, req.query.path)
+        const result = await request.query('SELECT RedirectUrl FROM Links WHERE ShortenedPath = @path')
         context.res = {
             body: result
         }
