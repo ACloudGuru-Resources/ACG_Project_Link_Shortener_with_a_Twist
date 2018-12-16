@@ -12,3 +12,5 @@ This GitHub repository contains all of the source files that are referenced in t
 * `04_azurefunction_appsetting.js`: Azure Function Node.js code that adds connection pooling
 * `05_azurefunction_realquery.js`: Azure Function Node.js code that adds the real SQL query
 * `06_azurefunction_final.js`: Azure Function Node.js code with final code
+* `07_azurefunction_luckydip.js`: Azure Function Node.js code with lucky dip function code
+* `08_addmorelinks.sql`: SQL to insert a few extra links
