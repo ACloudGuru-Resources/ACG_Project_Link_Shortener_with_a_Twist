@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+        "Link shortener": {
+            "matchCondition": {
+                "route": "/{path}",
+                "methods": [
+                    "GET"
+                ]
+            },
+            "backendUri": "http://localhost/api/shorten?path={path}"
+        },
+        "Feeling lucky": {
+            "matchCondition": {
+                "route": "/imfeelinglucky",
+                "methods": [
+                    "GET"
+                ]
+            },
+            "backendUri": "http://localhost/api/luckydip"
+        }
+    }
+}
